@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 
 var citiesList = [
   {
@@ -24,17 +24,18 @@ var citiesList = [
 ]
 
 @Component({
+  // moduleId: module.id,
   selector: 'my-app',
-  template: `<div>
-    <map-component [data]="data"></map-component>
-    <list-component [data]="data" (dataChange)="onDataChange($event)"></list-component>
-  </div>`,
+  templateUrl: './app.component.html',
 })
 export class AppComponent  {
   name = 'Angular';
   data: Array<any> = citiesList;
 
+  constructor(private cdref: ChangeDetectorRef) { }
+
   onDataChange(nextData: any) {
     this.data = nextData.map((q: any) => q);
+    this.cdref.detectChanges();
   }
 }

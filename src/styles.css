@@ -47,3 +47,31 @@ h4 {
   border-top: 1px solid black;
   padding: 6px 12px;
 }
+
+.list-grip {
+  position: relative;
+  border-top: 2px solid #777;
+  display: block;
+  width: 10px;
+  height: 3px;
+  margin: 0 auto;
+  top: 2px;
+  cursor: move;
+}
+.list-grip:before {
+  border-top: 2px solid #777;
+  position: absolute;
+  top: -5px;
+  display: block;
+  width: 10px;
+  content: '';
+}
+.list-grip:after {
+  border-top: 2px solid #777;
+  width: 10px;
+  display: block;
+
+  position: absolute;
+  top: 1px;
+  content: '';
+}

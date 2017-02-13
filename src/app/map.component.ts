@@ -1,7 +1,6 @@
+declare var d3: any;
+declare var topojson: any;
 import { Component, Input, ElementRef, TemplateRef, Renderer, ViewChild } from '@angular/core';
-var d3: any = require('d3');
-var topojson: any = require('topojson');
-var d3GeoTile: any = require('d3.geoTile');
 
 @Component({
   selector: 'map-component',
@@ -34,14 +33,12 @@ export class MapComponent  {
   }
 
   initD3(container: Element) {
-    var width = this.width = Math.max(960, window.innerWidth),
-        height = this.height = Math.max(500, window.innerHeight) * 0.6;
+    var width = this.width = window.innerWidth,
+        height = this.height = window.innerHeight * 0.6;
         // prefix = prefixMatch(["webkit", "ms", "Moz", "O"]);
 
     var cx = width / 2;
     var cy = height / 2;
-    var tile = d3GeoTile()
-        .size([width, height]);
     // var projection = d3.geoMercator();
     this.projection = d3.geoOrthographic()
       .translate([cx, cy])
